@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -67,8 +66,7 @@ public enum TokenType {
     CONTINUE      ("continue"),
     BREAK         ("break"),
     RETURN        ("return"),
-    PRINTF        ("printf"),  // printf(TOKENS)
-    SCANF         ("scanf"),   // scanf(IDENTIFIER)
+    PRINTF        ("printf"),
 
     // Miscellaneous
     IDENTIFIER    ("IDENTIFIER"),
@@ -92,7 +90,7 @@ public enum TokenType {
 
     public static HashMap<String, TokenType> getReservedKeywords() {
         int startIndex = TokenType.DEFINE.ordinal();
-        int endIndex = TokenType.SCANF.ordinal();
+        int endIndex = TokenType.PRINTF.ordinal();
         HashMap<String, TokenType> reservedKeywords = new LinkedHashMap<>();
         for (int i = startIndex; i <= endIndex; i++) {
             reservedKeywords.put(TokenType.values()[i].representation, TokenType.values()[i]);
@@ -106,7 +104,6 @@ public enum TokenType {
         replace.put(TokenType.BOOL, "boolean");
         replace.put(TokenType.CONST, "final");
         replace.put(TokenType.PRINTF, "System.out.print");
-        replace.put(TokenType.SCANF, ".nextLine()");
         return replace;
     }
 }

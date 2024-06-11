@@ -7,6 +7,6 @@ void main() {
     } else if (e == 3.14) {
         printf("E is equal to 3.14.\n");
     } else {
-        printf("E is not equal to 3 or 3.14);
+        printf("E is not equal to 3 or 3.14");
     }
 }
