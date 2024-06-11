@@ -1,12 +1,12 @@
- #define X 3.14
+#define X 3.14
 
-int main() {
-    float e = X;
+void main() {
+    double e = X;
     if (e == 3) {
         printf("E is equal to 3.");
-    } else  if (e == 3.14) {
-        printf("E is equal to 3.14.");
+    } else if (e == 3.14) {
+        printf("E is equal to 3.14.\n");
+    } else {
+        printf("E is not equal to 3 or 3.14);
     }
-    printf("Hello world");
-    return 0;
 }

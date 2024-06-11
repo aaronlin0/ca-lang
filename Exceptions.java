@@ -26,4 +26,8 @@ public class Exceptions {
     public static void invalidDefinePlacement(String fileName, String repr, int line, int col) {
         System.out.println(fileName + ":" + (line + 1) + ":" + (col + 1) + ": error: invalid '" + repr + "' placement in program");
     }
+
+    public static void errorInCaFile() {
+        System.out.println("calang: error: unable to translate file due to errors in .ca file");
+    }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -24,6 +25,7 @@ public enum TokenType {
     E_BLOCK       ("*/"),
     S_QUOTE       ("'"),
     D_QUOTE       ("\""),
+    N_LINE        ("\\n"),
     NOT           ("!"),
     AND           ("&&"),
     OR            ("||"),
@@ -50,6 +52,7 @@ public enum TokenType {
     FLOAT         ("float"),
     DOUBLE        ("double"),
     CHAR          ("char"),
+    STRING        ("str"),
     BOOL          ("bool"),
     TRUE          ("true"),
     FALSE         ("false"),
@@ -64,13 +67,15 @@ public enum TokenType {
     CONTINUE      ("continue"),
     BREAK         ("break"),
     RETURN        ("return"),
-    STRUCT        ("struct"),
+    PRINTF        ("printf"),  // printf(TOKENS)
+    SCANF         ("scanf"),   // scanf(IDENTIFIER)
 
     // Miscellaneous
     IDENTIFIER    ("IDENTIFIER"),
     INT_LIT       ("INT_LIT"),
     FLOAT_LIT     ("FLOAT_LIT"),
     STR_LIT       ("STR_LIT"),
+    SPACE         (" "),
     ERROR         ("ERROR"),
     EOL           ("EOL"),
     EOF           ("EOF");
@@ -87,11 +92,21 @@ public enum TokenType {
 
     public static HashMap<String, TokenType> getReservedKeywords() {
         int startIndex = TokenType.DEFINE.ordinal();
-        int endIndex = TokenType.STRUCT.ordinal();
+        int endIndex = TokenType.SCANF.ordinal();
         HashMap<String, TokenType> reservedKeywords = new LinkedHashMap<>();
         for (int i = startIndex; i <= endIndex; i++) {
             reservedKeywords.put(TokenType.values()[i].representation, TokenType.values()[i]);
         }
         return reservedKeywords; 
+    }
+
+    public static HashMap<TokenType, String> getReplacedKeywords() {
+        HashMap<TokenType, String> replace = new HashMap<>();
+        replace.put(TokenType.STRING, "String");
+        replace.put(TokenType.BOOL, "boolean");
+        replace.put(TokenType.CONST, "final");
+        replace.put(TokenType.PRINTF, "System.out.print");
+        replace.put(TokenType.SCANF, ".nextLine()");
+        return replace;
     }
 }

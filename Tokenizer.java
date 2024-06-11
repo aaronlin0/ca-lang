@@ -241,6 +241,11 @@ public class Tokenizer {
 				advance();
 				advance();
 				return token;
+			} if (doubleSymbol("\\n")) {
+				Token token = new Token(TokenType.N_LINE, TokenType.N_LINE.getRepresentation(), linePosition, charPosition);
+				advance();
+				advance();
+				return token;
 			} if (currentChar.equals("+")) {
 				Token token = new Token(TokenType.PLUS, TokenType.PLUS.getRepresentation(), linePosition, charPosition);
 				advance();

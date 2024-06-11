@@ -9,7 +9,14 @@ public class Transpiler {
         Preprocessor preprocessor = new Preprocessor(tokens);
         preprocessor.parseTokens();
         ArrayList<Token> preprocessedTokens = preprocessor.getNewTokens();
-        Translator translator = new Translator(preprocessedTokens, flags.getOutputFileName());
+        boolean containsError = preprocessor.getContainsError();
+        if (!containsError) {
+            Translator translator = new Translator(preprocessedTokens, flags.getOutputFileName());
+            translator.boilerplate();
+            translator.translate();
+        } else {
+            Exceptions.errorInCaFile();
+        }
 
         if (flags.getDebug()) {
             Debug.debugStartMessage();
