@@ -20,11 +20,9 @@ C@ is a simplified version of the C programming language, designed to eliminate 
 
 ```c
 // main.ca
-#include <stdio.h>
 
-int main() {
+void main() {
     printf("Hello, World!\n");
-    return 0;
 }
 ```
 
