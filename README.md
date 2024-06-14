@@ -21,8 +21,17 @@ C@ is a simplified version of the C programming language, designed to eliminate 
 ```c
 // main.ca
 
+#define PI 3.14
+
 void main() {
-    printf("Hello, World!\n");
+    const double E = PI;
+    if (E == 3) {
+        printf("E is equal to 3.\n");
+    } else if (E == 3.14) {
+        printf("E is equal to 3.14.\n");
+    } else {
+        printf("E is not equal to 3 or 3.14\n");
+    }
 }
 ```
 
